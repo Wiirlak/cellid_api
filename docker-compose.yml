@@ -3,17 +3,21 @@ version: "3.8"
 services:
   web:
     build: .
-    command: uvicorn main:app --reload --host
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/upciti/
     environment:
       - FLASK_ENV=development
     depends_on:
       - db
   db:
     image: postgres:12
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
