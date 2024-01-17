@@ -26,12 +26,8 @@ async def cellular(
     net: list[str] | None = Query(None),
     area: list[str] | None = Query(None),
     cell: list[str] | None = Query(None),
-    lon_min: float | None = Query(None, ge=-180, le=180),
-    lon_max: float | None = Query(None, ge=-180, le=180),
-    lat_min: float | None = Query(None, ge=-90, le=90),
-    lat_max: float | None = Query(None, ge=-90, le=90),
-    radius: float | None = Query(None),
+    longitude: float | None = Query(None, ge=-180, le=180),
+    latitude: float | None = Query(None, ge=-90, le=90),
+    radius: float | None = Query(None, ge=0),
 ) -> list[dict]:
-    return get_cellular(
-        limit, page, mmc, net, area, cell, lon_min, lon_max, lat_min, lat_max, radius
-    )
+    return get_cellular(limit, page, mmc, net, area, cell, longitude, latitude, radius)
