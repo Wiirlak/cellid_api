@@ -4,11 +4,13 @@
 This is a REST API for the CellID project. It is built using Python and Flask.
 
 ## Prerequisites
-- Python
+- Python 3.12 (with [Poetry](https://python-poetry.org/))
+
+Or
 - Docker
 - Docker Compose
 
-Copy the .env.example file to .env and fill in the values according to your environment.
+**Copy the ``.env.example`` file to ``.env`` and fill in the values according to your environment.**
 
 ## Installation
 
@@ -24,7 +26,7 @@ You should have a PostgreSQL database running on port 5432. You can use the dock
 ```bash
 git clone
 cd cellid_api
-pip install -r requirements.txt
+poetry install --with dev
 uvicorn main:app --reload --port 8000
 ```
 
