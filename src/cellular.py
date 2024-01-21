@@ -27,7 +27,7 @@ def get_cellular(
     if radius:
         if not longitude or not latitude:
             raise HTTPException(
-                400, "lon_min and lat_min must be specified when radius is specified"
+                400, "longitude and latitude must be specified when radius is specified"
             )
         query_params += build_radius_filter(longitude, latitude, radius)
     else:
